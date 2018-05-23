@@ -4,7 +4,7 @@ package com.lecheng.furiblesdk;
  * Created by Cheng on 2018/5/22.
  */
 
-public interface BlueToothLeInterface {
+public interface BluetoothLeInterface {
     public void getData(String weight, String type, String typeName, String unit);
 
     public void getConnectionState(String connStateInfo, boolean isConnected);
