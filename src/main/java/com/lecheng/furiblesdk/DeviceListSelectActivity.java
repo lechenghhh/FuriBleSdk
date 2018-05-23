@@ -49,7 +49,8 @@ import java.util.List;
  * Activity for scanning and displaying available Bluetooth LE devices.
  */
 @SuppressLint("NewApi")
-public abstract class DeviceListActivity extends ListActivity {
+@Deprecated
+public abstract class DeviceListSelectActivity extends ListActivity {
 
     private Activity at;
     private LeDeviceListAdapter mLeDeviceListAdapter;
@@ -152,7 +153,7 @@ public abstract class DeviceListActivity extends ListActivity {
         return true;
     }
 
-    public abstract  void getLeDevices(List<BluetoothDevice> devices);
+//    public abstract  void getLeDevices(List<BluetoothDevice> devices);
 
     @Override
     protected void onResume() {
@@ -167,7 +168,7 @@ public abstract class DeviceListActivity extends ListActivity {
         // Initializes list view adapter.
         mLeDeviceListAdapter = new LeDeviceListAdapter();
         setListAdapter(mLeDeviceListAdapter);
-        getLeDevices(mLeDeviceListAdapter.getLeDevices());
+//        getLeDevices(mLeDeviceListAdapter.getLeDevices());
         scanLeDevice(true);
     }
 
@@ -234,7 +235,7 @@ public abstract class DeviceListActivity extends ListActivity {
         public LeDeviceListAdapter() {
             super();
             mLeDevices = new ArrayList<BluetoothDevice>();
-            mInflator = DeviceListActivity.this.getLayoutInflater();
+            mInflator = DeviceListSelectActivity.this.getLayoutInflater();
         }
 
         public void addDevice(BluetoothDevice device) {
