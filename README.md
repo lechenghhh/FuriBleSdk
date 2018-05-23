@@ -5,7 +5,9 @@
 	targetSdkVersion 26 
 
 2 项目依赖
+
 方式1：
+
 Step 1. Add it in your root build.gradle at the end of repositories:
 
 	allprojects {
@@ -14,13 +16,17 @@ Step 1. Add it in your root build.gradle at the end of repositories:
 			maven { url 'https://www.jitpack.io' }
 		}
 	}
+
 Step 2. Add the dependency
 
 	dependencies {
 	        implementation 'com.github.lechenghhh:FuriBleSdk:v1.0'
 	}
 Share this release: 
-方式2：AndroidStudio->File->New->Import Module...->Sourc Directory:选择FuriBleSdk文件夹->Finish 
+
+方式2：
+
+AndroidStudio->File->New->Import Module...->Sourc Directory:选择FuriBleSdk文件夹->Finish 
 setting.gradle 文件中加入module文件夹后，在File->Project Structure->app->Dependencies 中添加对sdk文件夹的依赖后，rebuild项目
 
 3 AndroidManifest.xml配置
@@ -40,7 +46,7 @@ setting.gradle 文件中加入module文件夹后，在File->Project Structure->a
     	android:enabled="true" />
 ```
 
-4 扫描设备列表并连接设备
+4 扫描设备列表并连接设备DeviceListActivity与DeviceListSelectActivity皆可
 
 4.1 DeviceListActivity
 改类主要功能该类主要功能扫描并显示蓝牙设备名称和蓝牙地址。使用时请扩展自该类，并对子类注册AndroidMinefest.xml的activity启动标签
@@ -72,7 +78,7 @@ setting.gradle 文件中加入module文件夹后，在File->Project Structure->a
 5.3 getConnectionInfo(String deviceName, String deviceAddress)获取连接信息 
     deviceName:设备名称 DeviceAddress:设备Mac地址 
 
-5.4 getBluetoothLeService()获取服务实例BluetoothLeService 
+5.4 public abstract void getBluetoothLeService()获取服务实例BluetoothLeService
 
 5.5 BluetoothLeService
-    connect(String deviceAddress)传入地址进行重连操作
+    该类方法调用connect(String deviceAddress)传入地址进行重连操作
