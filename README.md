@@ -1,8 +1,22 @@
 福日电子秤蓝牙ble Android SDK
 ##1.版本信息
  V1.0 
-##2.项目依赖 
-AndroidStudio->File->New->Import Module...->Sourc Directory:选择FuriBleSdk文件夹->Finish 完成对依赖库的引用 依赖库targetSdkVersion 26 
+##2.项目依赖
+方式1：
+Step 1. Add it in your root build.gradle at the end of repositories:
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://www.jitpack.io' }
+		}
+	}
+Step 2. Add the dependency
+
+	dependencies {
+	        implementation 'com.github.lechenghhh:FuriBleSdk:v1.0'
+	}
+Share this release: 
+方式2：AndroidStudio->File->New->Import Module...->Sourc Directory:选择FuriBleSdk文件夹->Finish 完成对依赖库的引用 依赖库targetSdkVersion 26 
 ##3.AndroidManifest.xml配置
 ```xml
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
