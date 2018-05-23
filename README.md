@@ -1,10 +1,10 @@
 福日电子秤蓝牙ble Android SDK
 
-1.版本信息
+1 版本信息
 	V1.0
 	targetSdkVersion 26 
 
-2.项目依赖
+2 项目依赖
 方式1：
 Step 1. Add it in your root build.gradle at the end of repositories:
 
@@ -20,9 +20,10 @@ Step 2. Add the dependency
 	        implementation 'com.github.lechenghhh:FuriBleSdk:v1.0'
 	}
 Share this release: 
-方式2：AndroidStudio->File->New->Import Module...->Sourc Directory:选择FuriBleSdk文件夹->Finish 完成对依赖库的引用 
+方式2：AndroidStudio->File->New->Import Module...->Sourc Directory:选择FuriBleSdk文件夹->Finish 
+setting.gradle 文件中加入module文件夹后，在File->Project Structure->app->Dependencies 中添加对sdk文件夹的依赖后，rebuild项目
 
-3.AndroidManifest.xml配置
+3 AndroidManifest.xml配置
 ```xml
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
@@ -39,11 +40,28 @@ Share this release:
     	android:enabled="true" />
 ```
 
-4.DeviceListActivity.java
-该类主要功能扫描并显示蓝牙设备名称和蓝牙地址组件，选择设备以连接。 使用时请扩展自该类，并对子类注册AndroidMinefest.xml的activity启动标签 
+4 扫描设备列表并连接设备
 
-5.BluetoothLeActivity.java
-该类主要功能用于获取连接的设备名称和蓝牙地址，设备连接状态，获取实时的电子秤示数，包括正负值，质量数据，质量稳定/超轻/超重状态，质量单位，断线重连等功能。 使用时请扩展自该类，并对子类注册AndroidMinefest.xml的activity启动标签 
+4.1 DeviceListActivity
+改类主要功能该类主要功能扫描并显示蓝牙设备名称和蓝牙地址。使用时请扩展自该类，并对子类注册AndroidMinefest.xml的activity启动标签
+
+4.1.1 public void getLeDevices(List<BluetoothDevice> devices)
+该方法返回扫描到的设备数据，BluetoothDevice.getName()用于获取设备名称，BluetoothDevice.getAddress()用于获取设备mac地址。
+	
+4.1.2 选择好设备的名称与地址用startActivity()方法，将getLeDevices()方法中获取的参数并加入intent中，跳转指定的
+例:startActivity(new Intent(Context, DisplayActivity.class)
+                        .putExtra(BluetoothLeActivity.EXTRAS_DEVICE_NAME, BluetoothDevice.getName())
+                        .putExtra(BluetoothLeActivity.EXTRAS_DEVICE_ADDRESS, BluetoothDevice.getAddress());
+
+4.2 DeviceListSelectActivity.java(不推荐)
+该类主要功能扫描并显示蓝牙设备名称和蓝牙地址，UI界面已经绘制封装完成，列表中选择设备以连接，menu菜单中有开始扫描和停止扫描的选项。 使用时请扩展自该类，并对子类注册AndroidMinefest.xml的activity启动标签
+
+4.2.1 public String setDisplayActivityPackage()
+请重写该方法并返回用于显示数据的activity的包名
+注：onCreate不必重写
+
+5 BluetoothLeActivity.java
+该类主要功能用显示数据：于获取连接的设备名称和蓝牙地址，设备连接状态，获取实时的电子秤示数，包括正负值，质量数据，质量稳定/超轻/超重状态，质量单位，断线重连等功能。 使用时请扩展自该类，并对子类注册AndroidMinefest.xml的activity启动标签 
 
 5.1 getData(String weight, String type, String typeName, String unit)获取电子秤数据
     weight:质量(包含符号位) type:类型 OL对应超重 ST 对应稳定 UN对应普通 typeName:类型名称 OL对应超重 ST 对应稳定 UN对应普通 unit:单位名称 kg/g/磅/斤 
