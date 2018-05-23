@@ -1,6 +1,6 @@
 package com.lecheng.furiblesdk;
 
-public class BluethhthLeException extends Exception {
-    public BluethhthLeException() {
+public class BluetoothLeException extends Exception {
+    public BluetoothLeException() {
     }
 }
