@@ -47,7 +47,7 @@ setting.gradle 文件中加入module文件夹后，在File->Project Structure->a
 		implementation(name: 'FuriBleSdk', ext: 'aar')
 	}
 	
-3 AndroidManifest.xml配置
+3 AndroidManifest.xml权限配置及服务配置
 ```xml
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
@@ -67,7 +67,7 @@ setting.gradle 文件中加入module文件夹后，在File->Project Structure->a
 4 扫描设备列表并连接设备DeviceListActivity与DeviceListSelectActivity皆可
 
 4.1 DeviceListActivity
-改类主要功能该类主要功能扫描并显示蓝牙设备名称和蓝牙地址。使用时请扩展自该类，并对子类注册AndroidMinefest.xml的activity启动标签
+该类主要功能该类主要功能扫描并显示蓝牙设备名称和蓝牙地址。使用时请扩展自该类，并对子类注册AndroidMinefest.xml的activity启动标签
 
 4.1.1 public void getLeDevices(List<BluetoothDevice> devices)
 该方法返回扫描到的设备数据，BluetoothDevice.getName()用于获取设备名称，BluetoothDevice.getAddress()用于获取设备mac地址。
