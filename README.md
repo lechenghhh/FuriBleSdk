@@ -6,7 +6,7 @@
 
 2 项目依赖
 
-方式1：
+方式1：(jipack.io方式)
 
 Step 1. Add it in your root build.gradle at the end of repositories:
 
@@ -24,11 +24,29 @@ Step 2. Add the dependency
 	}
 Share this release: 
 
-方式2：
+方式2：(module方式)
 
 AndroidStudio->File->New->Import Module...->Sourc Directory:选择FuriBleSdk文件夹->Finish 
 setting.gradle 文件中加入module文件夹后，在File->Project Structure->app->Dependencies 中添加对sdk文件夹的依赖后，rebuild项目
 
+方式3：(aar方式)
+
+将FuriBleSdk.aar文件放到项目的libs目录下，在app.gradle文件中加入以下配置：
+
+	allprojects {
+    		repositories {
+       			flatDir {
+            			dirs 'libs'
+        		}
+        	jcenter()
+	    	}
+	}
+	
+	dependencies{
+		...
+		implementation(name: 'FuriBleSdk', ext: 'aar')
+	}
+	
 3 AndroidManifest.xml配置
 ```xml
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
