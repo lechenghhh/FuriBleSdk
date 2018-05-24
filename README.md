@@ -47,6 +47,7 @@ setting.gradle 文件中加入module文件夹后，在File->Project Structure->a
 	}
 	
 3 AndroidManifest.xml权限配置及服务配置
+所需权限
 ```xml
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
