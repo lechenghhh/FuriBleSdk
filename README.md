@@ -30,7 +30,7 @@ setting.gradle 文件中加入module文件夹后，在File->Project Structure->a
 
 方式3：(aar文件方式)
 
-将FuriBleSdk.aar文件放到项目的libs目录下，在app.gradle文件中加入以下配置：
+将furiblesdk.aar文件放到项目的libs目录下，在app.gradle文件中加入以下配置：
 
 	allprojects {
     		repositories {
@@ -43,7 +43,7 @@ setting.gradle 文件中加入module文件夹后，在File->Project Structure->a
 	
 	dependencies{
 		...
-		implementation(name: 'FuriBleSdk', ext: 'aar')
+		implementation(name: 'furiblesdk', ext: 'aar')
 	}
 	
 3 AndroidManifest.xml权限配置及服务配置
