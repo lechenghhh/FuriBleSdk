@@ -22,14 +22,13 @@ Step 2. Add the dependency
 	dependencies {
 	        implementation 'com.github.lechenghhh:FuriBleSdk:v1.0'
 	}
-Share this release: 
 
 方式2：(module方式)
 
 AndroidStudio->File->New->Import Module...->Sourc Directory:选择FuriBleSdk文件夹->Finish 
 setting.gradle 文件中加入module文件夹后，在File->Project Structure->app->Dependencies 中添加对sdk文件夹的依赖后，rebuild项目
 
-方式3：(aar方式)
+方式3：(aar文件方式)
 
 将FuriBleSdk.aar文件放到项目的libs目录下，在app.gradle文件中加入以下配置：
 
@@ -73,9 +72,11 @@ setting.gradle 文件中加入module文件夹后，在File->Project Structure->a
 该方法返回扫描到的设备数据，BluetoothDevice.getName()用于获取设备名称，BluetoothDevice.getAddress()用于获取设备mac地址。
 	
 4.1.2 选择好设备的名称与地址用startActivity()方法，将getLeDevices()方法中获取的参数并加入intent中，跳转指定的
-例:startActivity(new Intent(Context, DisplayActivity.class)
-                        .putExtra(BluetoothLeActivity.EXTRAS_DEVICE_NAME, BluetoothDevice.getName())
-                        .putExtra(BluetoothLeActivity.EXTRAS_DEVICE_ADDRESS, BluetoothDevice.getAddress());
+例:
+
+	startActivity(new Intent(Context, DisplayActivity.class)
+		.putExtra(BluetoothLeActivity.EXTRAS_DEVICE_NAME, BluetoothDevice.getName())
+		.putExtra(BluetoothLeActivity.EXTRAS_DEVICE_ADDRESS, BluetoothDevice.getAddress());
 
 4.2 DeviceListSelectActivity.java(不推荐)
 该类主要功能扫描并显示蓝牙设备名称和蓝牙地址，UI界面已经绘制封装完成，列表中选择设备以连接，menu菜单中有开始扫描和停止扫描的选项。 使用时请扩展自该类，并对子类注册AndroidMinefest.xml的activity启动标签
