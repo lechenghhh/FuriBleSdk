@@ -50,43 +50,35 @@ import java.util.List;
  * Activity for scanning and displaying available Bluetooth LE devices.
  */
 @SuppressLint("NewApi")
-public abstract class DeviceListActivity<T> extends AppCompatActivity {
+public abstract class DeviceListActivity extends AppCompatActivity {
 
-  
+
     private BluetoothAdapter mBluetoothAdapter;
     private boolean mScanning;
     private Handler mHandler;
     private static final long SCAN_PERIOD = 16000L;
 
-    private LeScanCallback mLeScanCallback = new LeScanCallback() {
-        public void onLeScan(final BluetoothDevice device, int rssi, byte[] scanRecord) {
-            DeviceListActivity.this.runOnUiThread(new Runnable() {
-                public void run() {
-                    getLeDevice(device);
-                }
-            });
-        }
-    };
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.mHandler = new Handler();
         if (!this.getPackageManager().hasSystemFeature("android.hardware.bluetooth_le")) {
-            Toast.makeText(this, string.ble_not_supported, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.ble_not_supported, Toast.LENGTH_LONG).show();
             this.finish();
         }
 
-        if (VERSION.SDK_INT >= 23 && ContextCompat.checkSelfPermission(this, "android.permission.ACCESS_COARSE_LOCATION") != 0) {
+        if (Build.VERSION.SDK_INT >= 23 && ContextCompat.checkSelfPermission(this, "android.permission.ACCESS_COARSE_LOCATION") != 0) {
             ActivityCompat.requestPermissions(this, new String[]{"android.permission.ACCESS_COARSE_LOCATION"}, 10);
         }
 
         BluetoothManager bluetoothManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
         this.mBluetoothAdapter = bluetoothManager.getAdapter();
         if (this.mBluetoothAdapter == null) {
-            Toast.makeText(this, string.error_bluetooth_not_supported, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.error_bluetooth_not_supported, Toast.LENGTH_LONG).show();
             this.finish();
         }
     }
+
 
     protected void scanLeDevice(boolean enable) {
         if (enable) {
@@ -95,7 +87,7 @@ public abstract class DeviceListActivity<T> extends AppCompatActivity {
                     DeviceListActivity.this.mScanning = false;
                     DeviceListActivity.this.mBluetoothAdapter.stopLeScan(DeviceListActivity.this.mLeScanCallback);
                     DeviceListActivity.this.invalidateOptionsMenu();
-                    onScanStop();
+//                    onScanStop();
                 }
             }, SCAN_PERIOD);
             this.mScanning = true;
@@ -107,18 +99,29 @@ public abstract class DeviceListActivity<T> extends AppCompatActivity {
         this.invalidateOptionsMenu();
     }
 
-    protected abstract void onScanStop();
+    //    protected abstract void onScanStop();
+    private BluetoothAdapter.LeScanCallback mLeScanCallback = new BluetoothAdapter.LeScanCallback() {
+        public void onLeScan(final BluetoothDevice device, int rssi, byte[] scanRecord) {
+            DeviceListActivity.this.runOnUiThread(new Runnable() {
+                public void run() {
+                    getLeDevice(device);
+                }
+            });
+        }
+    };
+
+    public abstract void getLeDevice(BluetoothDevice bluetoothDevice);
 
     public boolean onCreateOptionsMenu(Menu menu) {
 //        this.getMenuInflater().inflate(menu.main, menu);
         if (!this.mScanning) {
-            menu.findItem(id.menu_stop).setVisible(false);
-            menu.findItem(id.menu_scan).setVisible(true);
-            menu.findItem(id.menu_refresh).setActionView((View) null);
+            menu.findItem(R.id.menu_stop).setVisible(false);
+            menu.findItem(R.id.menu_scan).setVisible(true);
+            menu.findItem(R.id.menu_refresh).setActionView((View) null);
         } else {
-            menu.findItem(id.menu_stop).setVisible(true);
-            menu.findItem(id.menu_scan).setVisible(false);
-            menu.findItem(id.menu_refresh).setActionView(layout.unit_progress);
+            menu.findItem(R.id.menu_stop).setVisible(true);
+            menu.findItem(R.id.menu_scan).setVisible(false);
+            menu.findItem(R.id.menu_refresh).setActionView(R.layout.unit_progress);
         }
 
         return true;
@@ -126,10 +129,10 @@ public abstract class DeviceListActivity<T> extends AppCompatActivity {
 
     public boolean onOptionsItemSelected(MenuItem item) {
         int i = item.getItemId();
-        if (i != id.menu_history) {
-            if (i == id.menu_scan) {
+        if (i != R.id.menu_history) {
+            if (i == R.id.menu_scan) {
                 this.scanLeDevice(true);
-            } else if (i == id.menu_stop) {
+            } else if (i == R.id.menu_stop) {
                 this.scanLeDevice(false);
             }
         }
@@ -137,15 +140,18 @@ public abstract class DeviceListActivity<T> extends AppCompatActivity {
         return true;
     }
 
-    public abstract void getLeDevice(BluetoothDevice bluetoothDevice);
 
-    protected void onResume() {
-        super.onResume();
+    public void checkBLEPermission() {
         if (!this.mBluetoothAdapter.isEnabled() && !this.mBluetoothAdapter.isEnabled()) {
             Intent enableBtIntent = new Intent("android.bluetooth.adapter.action.REQUEST_ENABLE");
             this.startActivityForResult(enableBtIntent, 1);
         }
         this.scanLeDevice(true);
+    }
+
+    protected void onResume() {
+        super.onResume();
+
     }
 
     protected void onPause() {
