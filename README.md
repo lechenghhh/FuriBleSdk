@@ -69,8 +69,8 @@ setting.gradle 文件中加入module文件夹后，在File->Project Structure->a
 4.1 DeviceListActivity
 该类主要功能该类主要功能扫描并显示蓝牙设备名称和蓝牙地址。使用时请扩展自该类，并对子类注册AndroidMinefest.xml的activity启动标签
 
-4.1.1 public void getLeDevices(List<BluetoothDevice> devices)
-该方法返回扫描到的设备数据，BluetoothDevice.getName()用于获取设备名称，BluetoothDevice.getAddress()用于获取设备mac地址。
+4.1.1 public void getLeDevices((BluetoothDevice devices)
+该方法返回扫描到的设备数据，devices.getName()用于获取设备名称，devices.getAddress()用于获取设备mac地址。
 	
 4.1.2 选择好设备的名称与地址用startActivity()方法，将getLeDevices()方法中获取的参数并加入intent中，跳转指定的
 例:
