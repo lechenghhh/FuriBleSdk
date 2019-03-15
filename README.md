@@ -86,6 +86,8 @@ setting.gradle 文件中加入module文件夹后，在File->Project Structure->a
 请重写该方法并返回用于显示数据的activity的包名
 注：onCreate不必重写
 
+4.2.2 checkBLEPermissions()调用该方法进行权限申请，若在onResume方法中执行该方法，用户不同意蓝牙权限的话将无法使用功能。
+
 5 BluetoothLeActivity.java
 该类主要功能用显示数据：于获取连接的设备名称和蓝牙地址，设备连接状态，获取实时的电子秤示数，包括正负值，质量数据，质量稳定/超轻/超重状态，质量单位，断线重连等功能。 使用时请扩展自该类，并对子类注册AndroidMinefest.xml的activity启动标签 
 
