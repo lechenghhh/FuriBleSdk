@@ -1,8 +1,8 @@
 福日电子秤蓝牙ble Android SDK
 
 1 版本信息
-	V1.0
-	targetSdkVersion 26 
+	FuriSDK版本:V1.1
+	Android targetSdkVersion 26 
 
 2 项目依赖
 
