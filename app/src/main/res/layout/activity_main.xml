@@ -19,12 +19,18 @@
         android:layout_height="wrap_content"
         android:text="若未扫描到设备 请检测是否开启了蓝牙" />
 
-    <TextView
-        android:id="@+id/tv1"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="示例程序" />
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tv1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="示例程序\n" />
+    </ScrollView>
 
     <EditText
         android:id="@+id/etAddress"
