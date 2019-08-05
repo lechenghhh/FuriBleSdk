@@ -42,6 +42,12 @@ public class ScanActivity extends DeviceListActivity {
                 scanLeDevice(true);
             }
         });
+//获取定位权限
+if (Build.VERSION.SDK_INT >= 23) {
+    if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 10);
+    }
+}
     }
 
     @Override
