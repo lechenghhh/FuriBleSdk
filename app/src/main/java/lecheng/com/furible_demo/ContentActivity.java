@@ -13,8 +13,8 @@ import static com.lecheng.furiblesdk.BluetoothLeActivity.EXTRAS_DEVICE_NAME;
 
 public class ContentActivity extends BluetoothLeActivity {
 
-    TextView tv1;
-    TextView tv2;
+    TextView tv1, tv2;
+    String name, address;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
     @Override
@@ -22,12 +22,12 @@ public class ContentActivity extends BluetoothLeActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_content);
 
-        tv1 = findViewById(R.id.tv1);
-        tv2 = findViewById(R.id.tv2);
-        tv1.setText(getIntent().getStringExtra(EXTRAS_DEVICE_NAME) + "-" +
-                getIntent().getStringExtra(EXTRAS_DEVICE_NAME));
+        tv1 = findViewById(R.id.tvDevice);
+        tv2 = findViewById(R.id.tvContent);
+        tv1.setText(name + "-" + address);
     }
 
+    //当接受到数据后该方法会自动回调
     @Override
     public void getData(String s, String s1, String s2, String s3) {
         tv2.setText(s);
@@ -35,12 +35,12 @@ public class ContentActivity extends BluetoothLeActivity {
 
     @Override
     public void getConnectionState(String s, boolean b) {
-
     }
 
     @Override
     public void getConnectionInfo(String s, String s1) {
-
+        name = s;
+        address = s1;
     }
 
     @Override

@@ -4,19 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical"
     android:padding="16dp"
     tools:context=".ContentActivity">
 
     <TextView
-        android:id="@+id/tv1"
-        android:layout_width="match_parent"
+        android:id="@+id/tvDevice"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="tv1" />
+        android:text="device info"
+        android:textSize="18dp" />
 
     <TextView
-        android:id="@+id/tv2"
-        android:layout_width="match_parent"
+        android:id="@+id/tvContent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="tv2" />
+        android:text="data"
+        android:textSize="18dp" />
 </LinearLayout>
