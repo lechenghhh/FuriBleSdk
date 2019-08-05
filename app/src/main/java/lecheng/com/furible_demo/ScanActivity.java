@@ -47,13 +47,6 @@ public class ScanActivity extends DeviceListActivity {
                         .putExtra(BluetoothLeActivity.EXTRAS_DEVICE_ADDRESS, etAddress.getText().toString().trim()));
             }
         });
-
-        //获取定位权限，蓝牙功能需要定位服务
-        if (Build.VERSION.SDK_INT >= 23) {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, 10);
-            }
-        }
     }
 
     @Override
