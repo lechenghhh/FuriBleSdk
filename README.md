@@ -56,6 +56,10 @@ setting.gradle 文件中加入module文件夹后，在File->Project Structure->a
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" /> 
     <uses-permission android:name="android.permission.DEVICE_POWER" />
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="true" />
+    <uses-permission-sdk-23 android:name="android.permission.ACCESS_COARSE_LOCATION" />
 ```
 在标签中加入，启用ble服务程序
 ```xml
