@@ -25,8 +25,8 @@ import com.lecheng.furiblesdk.DeviceListActivity;
 /*设备扫描/连接选择界面*/
 public class ScanActivity extends DeviceListActivity {
 
-    LinearLayout lvDevices;
     private BluetoothAdapter mBluetoothAdapter;
+    private LinearLayout lvDevices;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
