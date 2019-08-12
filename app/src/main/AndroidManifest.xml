@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="lecheng.com.furible_demo">
-
-    <!--这些权限请增加-->
+    <!-- 这些权限请增加 -->
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.DEVICE_POWER" />
-    <!--这些权限也不要漏-->
+    <uses-permission android:name="android.permission.DEVICE_POWER" /> <!-- 这些权限也不要漏 -->
     <uses-feature
         android:name="android.hardware.bluetooth_le"
         android:required="true" />
+
     <uses-permission-sdk-23 android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
@@ -22,17 +21,25 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!--请给各个界面注册-->
-        <activity android:name=".ContentActivity"></activity>
-        <!--请给各个界面注册-->
-        <activity android:name=".ScanActivity">
+
+        <!-- 引导页 -->
+        <activity
+            android:name=".GuideActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--该服务请务必开启，否则将无法使用福日ble蓝牙服务-->
+
+        <!-- 请给各个界面注册 -->
+        <activity android:name=".ContentActivity" />
+
+        <!-- 请给各个界面注册 -->
+        <activity android:name=".ScanActivity" />
+
+        <!-- 该服务请务必开启，否则将无法使用福日ble蓝牙服务 -->
         <service
             android:name="com.lecheng.furiblesdk.BluetoothLeService"
             android:enabled="true" />

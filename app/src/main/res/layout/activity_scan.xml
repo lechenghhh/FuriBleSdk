@@ -30,5 +30,7 @@
         android:id="@+id/btnScan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="scan" />
+        android:background="@drawable/style_btn_blue"
+        android:text="扫描设备"
+        android:textColor="@color/colorWhite" />
 </LinearLayout>

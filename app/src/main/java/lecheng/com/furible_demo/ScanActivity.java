@@ -7,6 +7,7 @@ import android.bluetooth.BluetoothManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
@@ -72,6 +73,7 @@ public class ScanActivity extends DeviceListActivity {
     public void getLeDevice(final BluetoothDevice bluetoothDevice) {        //如果获取到空的设备可以自行排除
         TextView tvDevice = new TextView(this);
         tvDevice.setPadding(10, 10, 10, 10);
+        tvDevice.setTextColor(Color.parseColor("#1976D2"));
         tvDevice.setText(bluetoothDevice.getName() + " - " + bluetoothDevice.getAddress());
         tvDevice.setOnClickListener(new View.OnClickListener() {
             @Override
