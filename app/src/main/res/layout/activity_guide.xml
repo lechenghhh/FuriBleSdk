@@ -1,23 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".GuideActivity">
+    android:layout_height="match_parent">
 
     <View
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
-
-    <Button
-        android:id="@+id/btnSkip"
+        android:id="@+id/vGuide"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:background="@drawable/style_btn_blue"
-        android:text="我明白了"
-        android:textColor="@color/colorWhite" />
-</LinearLayout>
+        android:layout_weight="1"
+        android:background="@mipmap/bg_guide" />
+
+    <FrameLayout
+        android:id="@+id/flSkip"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@color/colorTran"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/btnSkip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="16dp"
+            android:background="@drawable/style_btn_blue"
+            android:drawableLeft="@mipmap/ic_light"
+            android:elevation="4dp"
+            android:paddingLeft="24dp"
+            android:paddingRight="24dp"
+            android:text="我明白了,开始操作"
+            android:textColor="@color/colorWhite" />
+    </FrameLayout>
+</FrameLayout>
