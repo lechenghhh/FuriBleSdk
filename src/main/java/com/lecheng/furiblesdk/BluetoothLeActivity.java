@@ -337,5 +337,6 @@ public abstract class BluetoothLeActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        unregisterReceiver(mGattUpdateReceiver);
     }
 }
