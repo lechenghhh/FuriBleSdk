@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">FURI BLE SDK</string>
+    <!-- Copyright (C) 2013 The Android Open Source Project
+
+         Licensed under the Apache License, Version 2.0 (the "License");
+         you may not use this file except in compliance with the License.
+         You may obtain a copy of the License at
+
+              http://www.apache.org/licenses/LICENSE-2.0
+
+         Unless required by applicable law or agreed to in writing, software
+         distributed under the License is distributed on an "AS IS" BASIS,
+         WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+         See the License for the specific language governing permissions and
+         limitations under the License.
+
+            版权（c）2013 Android开源项目
+            根据Apache许可证授权，版本2（“许可”）；
+            除许可证外，您不得使用此文件。
+            您可以获得许可证副本。
+            http://www.apache.org/licenses/LICENSE-2.0
+            除非适用法律或书面同意，软件
+            在许可下分发的是按“是”的方式分发的，
+            没有任何保证或条件，无论是明示还是默示。
+            查看许可语言的具体许可证和
+            许可证下的限制。
+    -->
+    <string name="ble_not_supported">不支持BLE</string>
+    <string name="label_data">数据:</string>
+    <string name="label_device_address">地址:</string>
+    <string name="label_state">状态:</string>
+    <string name="no_data"></string>
+    <string name="connected">已连接</string>
+    <string name="disconnected">已断开</string>
+    <string name="title_devices">BLE Device Scan</string>
+    <string name="error_bluetooth_not_supported">不支持蓝牙-Bluetooth not supported.</string>
+    <string name="unknown_device">未知设备</string>
+    <!--(Unknown characteristic) / (Unknown service)-->
+    <string name="unknown_characteristic">未知特征</string>
+    <string name="unknown_service">未知服务</string>
+    <!-- Menu items -->
+    <string name="menu_connect">连接</string>
+    <string name="menu_disconnect">未连接</string>
+    <string name="menu_scan">扫描</string>
+    <string name="menu_stop">停止</string>
+</resources>

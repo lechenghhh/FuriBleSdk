@@ -1,1 +1,2 @@
+include ':FuriBleSdk-master'
 include ':app'
