@@ -309,4 +309,8 @@ public class BluetoothLeService extends Service {
         if (mBluetoothGatt == null) return null;
         return mBluetoothGatt.getServices();
     }
+
+    public BluetoothGatt getmBluetoothGatt() {
+        return mBluetoothGatt;
+    }
 }
